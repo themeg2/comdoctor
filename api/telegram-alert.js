@@ -25,9 +25,9 @@ module.exports = async (req, res) => {
       return res.status(400).json({ status: 'error', message: '필수 정보가 누락되었습니다' });
     }
     
-    // 텔레그램 설정
-    const telegramToken = 'AAEGv917zlR1uFK6EbyHfNxYQuATbSwruDQ';
-    const chatId = '5934421096';
+  // 텔레그램 설정
+  const telegramToken = '7016725438:AAEGv917zlR1uFKGEbyHfNxYQuATbSmruDO'; // 컴닥터 봇 토큰
+  const chatId = '593442109'; // 귀하의 채팅 ID
     
     // 메시지 구성
     const telegramMessage = `🔔 *새 문의가 접수되었습니다!*\n\n` +
