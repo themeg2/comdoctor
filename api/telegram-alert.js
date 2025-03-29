@@ -30,12 +30,12 @@ module.exports = async (req, res) => {
   const chatId = 593442109; // 귀하의 채팅 ID
     
     // 메시지 구성
-    const telegramMessage = `🔔 *새 문의가 접수되었습니다!*\n\n` +
-                          `📝 *이름:* ${name}\n` +
-                          `📞 *연락처:* ${phone}\n` +
-                          `🏠 *주소:* ${address || '정보 없음'}\n\n` +
-                          `💬 *문의 내용:*\n${message}\n\n` +
-                          `⏰ *접수 시간:* ${new Date().toLocaleString('ko-KR')}`;
+    const telegramMessage = ` *새 문의가 접수되었습니다!*\n\n` +
+                          ` *이름:* ${name}\n` +
+                          ` *연락처:* ${phone}\n` +
+                          ` *주소:* ${address || '정보 없음'}\n\n` +
+                          ` *문의 내용:*\n${message}\n\n` +
+                          ` *접수 시간:* ${new Date().toLocaleString('ko-KR')}`;
     
    // 텔레그램 API 호출
   const telegramResponse = await axios.post(
@@ -43,7 +43,7 @@ module.exports = async (req, res) => {
     {
       chat_id: chatId,
       text: telegramMessage,
-      parse_mode: 'Markdown'
+      // parse_mode: 'Markdown'
     }
   );
   
