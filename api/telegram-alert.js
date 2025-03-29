@@ -27,7 +27,7 @@ module.exports = async (req, res) => {
     
   // 텔레그램 설정
   const telegramToken = '7666913161:AAFqtxGeL5obOdhFLIfbufAGw2Qarw-v03Q'; // 컴닥터 봇 토큰
-  const chatId = '593442109'; // 귀하의 채팅 ID
+  const chatId = 593442109; // 귀하의 채팅 ID
     
     // 메시지 구성
     const telegramMessage = `🔔 *새 문의가 접수되었습니다!*\n\n` +
