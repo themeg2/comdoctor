@@ -37,19 +37,26 @@ module.exports = async (req, res) => {
                           `💬 *문의 내용:*\n${message}\n\n` +
                           `⏰ *접수 시간:* ${new Date().toLocaleString('ko-KR')}`;
     
-    // 텔레그램 API 호출
-    const telegramResponse = await axios.post(
-      `https://api.telegram.org/bot${telegramToken}/sendMessage`,
-      {
-        chat_id: chatId,
-        text: telegramMessage,
-        parse_mode: 'Markdown'
-      }
-    );
-    
-    return res.status(200).json({ status: 'success', message: '문의가 접수되었습니다' });
-  } catch (error) {
-    console.error('Error:', error);
-    return res.status(500).json({ status: 'error', message: '서버 오류가 발생했습니다' });
+   // 텔레그램 API 호출
+  const telegramResponse = await axios.post(
+    `https://api.telegram.org/bot${telegramToken}/sendMessage`,
+    {
+      chat_id: chatId,
+      text: telegramMessage,
+      parse_mode: 'Markdown'
+    }
+  );
+  
+  // 로그 추가
+  console.log('텔레그램 응답:', telegramResponse.status);
+  
+  return res.status(200).json({ status: 'success', message: '문의가 접수되었습니다' });
+} catch (error) {
+  // 더 자세한 오류 로깅
+  console.error('오류 세부 정보:', error.message);
+  if (error.response) {
+    console.error('텔레그램 API 응답:', error.response.data);
   }
+  return res.status(500).json({ status: 'error', message: '서버 오류가 발생했습니다: ' + error.message });
+}
 };
